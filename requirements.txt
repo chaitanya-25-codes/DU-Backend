@@ -1,0 +1,18 @@
+fastapi
+uvicorn
+pydantic
+python-dotenv
+python-multipart
+
+# Document parsing
+pdfplumber
+python-docx
+
+# AI & embeddings
+openai
+langchain
+langchain-community
+langchain-openai
+chromadb
+tiktoken
+httpx
