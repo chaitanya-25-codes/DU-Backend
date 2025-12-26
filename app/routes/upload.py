@@ -5,6 +5,7 @@ import os
 import uuid
 from app.utils.pdf_utils import extract_text_from_pdf
 import shutil
+import docx
 router=APIRouter()
 UPLOAD_DIR="uploads"
 os.makedirs(UPLOAD_DIR,exist_ok=True)
@@ -20,6 +21,9 @@ async def submit_file(
     # read the file content as a string
     if(file.filename.endswith(".pdf")):
         text=extract_text_from_pdf(file_path)
+    elif(file.filename.endswith(".docx")):
+        doc = docx.Document(file_path)
+        text = "\n".join([p.text for p in doc.paragraphs])
     else:
          with open(file_path,"r",encoding="utf-8",errors="ignore") as content_file:
              text=content_file.read()
